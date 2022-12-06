@@ -5,8 +5,25 @@ msg:
 
   db "Hello, World!"
 
-; Right so, from my undertanding, how this works is it's a pointer? to the start?
-; of the msg? subtracted by the msg???? to somehow get it's length?????????
+; Right so, from my *new* undertanding, how this works is it takes the location
+; of the end of msg in memory which is a pointer? subtracts it by the start of
+; the msg pointer and you get the length.
+
+; Example: (I am still not sure of this myself)
+; 
+; treat 0 as a pleaceholder of whatever the bit's value could be (even though
+; technically it's a null byte)
+;
+; m stands for a byte with some msg data
+; This does *not* represent the actual message defined at the top
+; 
+; b1 b2 b3 b4 b5 b6 b7 b8 b9 b1
+;  0  0  0  m  m  m  m  m  0  0
+;           ^              ^
+; 			|              |
+;          msg 			   $
+;
+; 9 - 4 = 5 which happens to be true for the example
 
 ; TODO: look it up again
 size equ $ - msg
