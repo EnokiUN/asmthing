@@ -1,9 +1,11 @@
-dist/hello: dist/hello.o
-	ld -e start -o dist/hello dist/hello.o
-	chmod +x dist/hello
+name := hello
 
-dist/hello.o: hello.asm dist
-	nasm -f elf64 hello.asm -o dist/hello.o
+bin: object
+	ld -e start -o dist/$(name) dist/$(name).o
+	chmod +x dist/$(name)
+
+object: $(name).asm dist
+	nasm -f elf64 $(name).asm -o dist/$(name).o
 
 dist:
 	mkdir dist
@@ -11,5 +13,5 @@ dist:
 clean:
 	rm dist -r
 
-run: dist/hello
-	./dist/hello
+run: dist/$(name)
+	./dist/$(name)
