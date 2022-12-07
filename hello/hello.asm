@@ -20,8 +20,8 @@ msg:
 ; b1 b2 b3 b4 b5 b6 b7 b8 b9 b1
 ;  0  0  0  m  m  m  m  m  0  0
 ;           ^              ^
-; 			|              |
-;          msg 			   $
+;			|              |
+;          msg			   $
 ;
 ; 9 - 4 = 5 which happens to be true for the example
 
