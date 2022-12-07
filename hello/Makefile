@@ -13,5 +13,5 @@ dist:
 clean:
 	rm dist -r
 
-run: dist/$(name)
+run: bin
 	./dist/$(name)
