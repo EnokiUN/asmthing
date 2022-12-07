@@ -1,4 +1,4 @@
-name := hello
+name := io
 
 bin: object
 	ld -e start -o dist/$(name) dist/$(name).o
