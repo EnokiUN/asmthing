@@ -1,4 +1,4 @@
-name := io
+name := hello
 
 bin: object
 	ld -e start -o dist/$(name) dist/$(name).o
@@ -13,5 +13,5 @@ dist:
 clean:
 	rm dist -r
 
-run: dist/$(name)
+run: bin
 	./dist/$(name)
