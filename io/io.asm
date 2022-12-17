@@ -1,13 +1,16 @@
 section .data
 
-greeting: db "Hi! What is your name?", 0xA, 0
+greeting: db "Hi! What is your name?", 0xA, "> "
 greetingsize: EQU $ - greeting
 
 end: db "Hello", 0x20
 endsize: EQU $ - end
 
-end2: db ", greetings from assembly!"
+end2: db ", greetings from assembly!", 0xA, 0
 endsize2: EQU $ - end2
+
+empty: db "You must pass something...", 0xA, 0
+emptysize: EQU $ - empty
 
 name: db 0 ; This must be defined at the end, ask me why if you're interested
 
@@ -26,6 +29,11 @@ start:
   mov rdx, -1
   int 0x80
 
+  dec rax ; cheating but shhh
+
+  cmp rax, 0
+  jle redo_empty
+
   push rax ; push to stack
 
   mov rax, 4
@@ -35,7 +43,6 @@ start:
   int 0x80
 
   pop rbp
-  dec rbp ; cheating but shhh
 
   mov rax, 4
   mov rbx, 1
@@ -52,5 +59,14 @@ start:
   mov rax, 1
   mov rbx, 0
   int 0x80
+
+redo_empty:
+  mov rax, 4
+  mov rbx, 1
+  mov rcx, empty
+  mov rdx, emptysize
+  int 0x80
+
+  jmp start
 
 global start
